@@ -1,0 +1,47 @@
+{
+    "mqtt": {
+        "ip": "127.0.0.1",
+        "port": 1883
+    },
+    "coreSettings": {
+        "arduComport": "auto",
+        "arduFirmwareNoPromptUpdate": false,
+        "arduFirmware": "./arduFirmware/GSOF Arduino IO-Bridge 2.1.hex",
+        "maxArduIOSpeed": 25,
+        "maxAppFPS": 60
+    },
+    "loggerSettings":{
+        "logLevel": "INFO",
+        "handlers":{
+            "file": true,
+            "console": true,
+            "mqtt": true
+        }
+    },
+    "features": {
+        "lights": {
+            "active": true,
+            "arduPin": 11,
+            "zeroAt": 60,
+            "reverse": true,
+            "min": 55,
+            "max": 100,
+            "help": "hold or press up to dim the lights on, hold or press down to dim the lights off, double press up to turn on the lights, double press down to turn off the lights"
+        },
+        "lightButtons": {
+            "active": true,
+            "onPin": 7,
+            "offPin": 6,
+            "readFrequency": 3
+        },
+        "alarm_clock": {
+            "active": true,
+            "wakeupTime": "6:40",
+            "help": "starts at %s. press any button on the remote to stop alarm clock"
+        },
+        "infoSender": {
+            "active": true,
+            "help": "sends info about room on demand."
+        }
+    }
+}

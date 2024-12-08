@@ -1,0 +1,9 @@
+beautifulsoup4
+numpy
+pillow
+paho_mqtt==1.6.0
+pyaudio
+schedule
+clap-detector
+GSOF_ArduBridge
+opencv-python

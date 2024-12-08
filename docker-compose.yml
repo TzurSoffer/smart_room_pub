@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    image: smart-room
+    ports:
+      - "1883:1883"  # Mosquitto MQTT broker
+    volumes:
+      - .:/app       # Warning this will overwrite the files in the container, which is great for developers, but it means that any file edited in the src folder is also modified in the container itself.
+    privileged: true
+    restart: always

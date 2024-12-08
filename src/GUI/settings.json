@@ -1,0 +1,10 @@
+{
+    "mqtt": {
+        "ip": "127.0.0.1",
+        "port": 1883
+    },
+    "GUI": {
+        "password": "admin",
+        "firstInstall": true
+    }
+}

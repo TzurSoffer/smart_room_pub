@@ -1,0 +1,135 @@
+{
+    "help": {
+        "variables": "variables: anyplace the key of a variable is found, it will be replaced with its value",
+        "{val}": "placeholder, used to say that anything can go there, the value should be suplied by the user",
+        "commands": {
+            "sendMessage": "requires topic, and message. It will send a message on the target topic.",
+            "runCommands": "get a list of commands and any values/vars required(seperated by space) and it will run and process them one by one. EX: ['wsLedsOff', 'lightsSet 60']"
+        }
+    },
+    "mqtt": {
+        "ip": "127.0.0.1",
+        "port": 1883
+    },
+    "variables": {
+        "|ledsPin|": "13",
+        "|ledsCount|": "300"
+    },
+    "commands": {
+        "lightsSet": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsSet {val}"
+        },
+        "lightsUp": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsUp"
+        },
+        "lightsDown": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsDown"
+        },
+        "lightsOn": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsOn"
+        },
+        "lightsOff": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsOff"
+        },
+        "lightsToggle": {
+            "command": "sendMessage",
+            "topic": "smartRoom/arduino/input",
+            "message": "lightsToggle"
+        },
+        "pinMode": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "pinMode {val} {val}"
+        },
+        "digitalRead": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "digitalRead {val}"
+        },
+        "digitalWrite": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "digitalWrite {val} {val}"
+        },
+        "wsSetConfig": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "wsSetConfig |ledsPin| |ledsCount| {val}"
+        },
+        "wsLedWrite": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "wsLedWrite {val}"
+        },
+        "wsLedsOff": {
+            "command": "sendMessage",
+            "topic": "smartRoom/remoteArdu/input",
+            "message": "wsSetConfig |ledsPin| |ledsCount| (0,0,0)"
+        },
+        "allOff": {
+            "command": "runCommands",
+            "commands": ["wsLedsOff", "lightsOff"]
+        },
+        "allHalf": {
+            "command": "runCommands",
+            "commands": ["wsSetConfig (128,128,128)", "lightsSet 50"]
+        }
+    },
+    "features": {
+        "smartRoom/generic/output": {
+            "commands": {
+                "lightsSet {val}": "lightsSet",
+                "lightsUp": "lightsUp",
+                "lightsDown": "lightsDown",
+                "lightsOn": "lightsOn",
+                "lightsOff": "lightsOff",
+                "lightsToggle": "lightsToggle",
+
+                "pinMode {val} {val}": "pinMode",
+                "digitalRead {val}": "digitalRead",
+                "digitalWrite {val} {val}": "digitalWrite",
+                "wsSetConfig {val}": "wsSetConfig",
+                "wsLedWrite {val}": "wsLedWrite",
+                "wsLedsOff": "wsLedsOff" ,
+
+                "allOff": "allOff",
+                "allHalf": "allHalf"
+            }
+        },
+        "smartRoom/ardu/output": {
+            "commands": {
+                "pinMode {val} {val}": "pinMode",
+                "digitalRead {val}": "digitalRead",
+                "digitalWrite {val} {val}": "digitalWrite",
+                "wsSetConfig {val}": "wsSetConfig",
+                "wsLedWrite {val}": "wsLedWrite",
+                "wsLedsOff": "wsLedsOff" 
+            }
+        },
+        "smartRoom/autoLights/output": {
+            "commands": {
+                "exitRoom": "allOff" 
+            }
+        },
+        "smartRoom/alarm_clock/output": {
+            "commands": {
+                "alarmRing": "lightsOn"
+            }
+        },
+        "smartRoom/clapDetection/output": {
+            "commands": {
+                "doubleClap": "lightsToggle"
+            }
+        }
+    }
+}

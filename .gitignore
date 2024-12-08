@@ -1,0 +1,7 @@
+*.log
+src/__pycache__/*.*
+src/modules/__pycache__/*.*
+.history/
+.vsocde/
+*.tar
+*.FCBak
